@@ -26,7 +26,9 @@ float timgiatri(float *p,int n,float x)
 {
     int i,indext,indexp;
     float temptrai,tempphai;
-    temptrai = tempphai = x-*p;
+    temptrai = tempphai = x-*p;  
+    if(temptrai<0) temptrai = -temptrai;
+    if(tempphai>0) tempphai = -tempphai;
     for(i=0;i<n;i++)
     {
         if(*(p+i)>=x && tempphai<(x - *(p+i)) ) {tempphai = x -*(p+i); indexp = i;}

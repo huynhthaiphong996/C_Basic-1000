@@ -18,7 +18,7 @@ void main()
     scanf("%f",&x);
 
     gt = timgiatri(p,n,x);
-    printf("\nGia tri xa gia tri x nhat: %f",gt);
+    printf("\nGia tri gan gia tri x nhat: %f",gt);
 
 }
 
@@ -27,18 +27,19 @@ float timgiatri(float *p,int n,float x)
     int i,indext,indexp;
     float temptrai,tempphai;
     temptrai = tempphai = x-*p;
-     if(temptrai<0) temptrai = -temptrai;
+    if(temptrai<0) temptrai = -temptrai;
     if(tempphai>0) tempphai = -tempphai;
     for(i=0;i<n;i++)
     {
-        if(*(p+i)>=x && tempphai>(x - *(p+i)) ) {tempphai = x -*(p+i); indexp = i;}
-        else if(*(p+i)<x && temptrai<(x - *(p+i))) {temptrai = x - *(p+i);indext = i;}
+        if(*(p+i)>=x && tempphai<(x - *(p+i)) ) {tempphai = x -*(p+i); indexp = i;}
+        else if(*(p+i)<x && temptrai>(x - *(p+i))) {temptrai = x - *(p+i);indext = i;}
     }
 
     if(tempphai<0) tempphai = -tempphai;
     if(temptrai<0) temptrai = -temptrai;
 
-    if(tempphai>temptrai) return *(p+indexp);
+    if(tempphai<temptrai) return *(p+indexp);
     else return *(p+indext);
 
 }
+
